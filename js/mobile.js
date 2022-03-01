@@ -20,11 +20,11 @@ const displayLoad = (phones) => {
     const div = document.createElement("div");
     div.classList.add("col");
     div.innerHTML = `
-        <div class="card h-100">
+        <div class="card h-100 shadow">
             <img src="${phone.image}" class="card-img-top img-fluid" alt="..." />
-            <div class="card-body">
+            <div class="card-body text-center">
                 <h4 class="card-title">Brand : ${phone.brand}</h4>
-                <h6 class="card-text">Phone Model : ${phone.phone_name}</h6>
+                <h6>Phone Model : ${phone.phone_name}</h6>
             </div>
             <a href="#phone-detail" onclick="loadPhoneDetail('${phone.slug}')"><span>Show Details</span></a>
         </div>
