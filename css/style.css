@@ -45,3 +45,13 @@
   opacity: 1;
   right: 0;
 }
+
+.card-text span {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.card-text {
+  font-size: 14px;
+  font-weight: 500;
+}
