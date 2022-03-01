@@ -57,7 +57,7 @@ const displayPhoneDetail = (phone) => {
                 <p class="card-text">${phone.mainFeatures.displaySize}</p>
             </div>
         </div>
-        <hr>
+        <hr class="hr">
         <div class="col">
             <div class="card-body">
                 <p class="card-text"><span>Announced : </span>${phone.releaseDate}</p>
