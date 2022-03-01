@@ -1,3 +1,47 @@
 .card {
   padding: 10px;
 }
+
+.card button {
+  width: 60%;
+  margin: 0 auto;
+  background-color: #1faa59;
+  border: none;
+  padding: 10px 15px;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 20px;
+  transition: all 0.5s;
+  cursor: pointer;
+  text-align: center;
+}
+
+.card button:hover {
+  background-color: #36cc10bd;
+}
+
+.card button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.card button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.card button:hover span {
+  padding-right: 25px;
+}
+
+.card button:hover span:after {
+  opacity: 1;
+  right: 0;
+}

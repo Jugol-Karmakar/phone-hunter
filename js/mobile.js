@@ -22,7 +22,7 @@ const displayLoad = (phones) => {
                 <h4 class="card-title">Brand : ${phone.brand}</h4>
                 <h6 class="card-text">Phone Model : ${phone.phone_name}</h6>
             </div>
-            <button>Show Details</button>
+            <button><span>Show Details</span></button>
         </div>
     `;
     phoneContainer.appendChild(div);
