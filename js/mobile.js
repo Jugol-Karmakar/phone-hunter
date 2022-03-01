@@ -1,3 +1,5 @@
+// button data load
+
 const loadButton = () => {
   const searchInput = document.getElementById("search-input");
   const searchText = searchInput.value;
@@ -7,6 +9,8 @@ const loadButton = () => {
     .then((res) => res.json())
     .then((data) => displayLoad(data.data));
 };
+
+// show search result
 
 const displayLoad = (phones) => {
   const phoneContainer = document.getElementById("phone-container");
@@ -22,12 +26,14 @@ const displayLoad = (phones) => {
                 <h4 class="card-title">Brand : ${phone.brand}</h4>
                 <h6 class="card-text">Phone Model : ${phone.phone_name}</h6>
             </div>
-            <button onclick="loadPhoneDetail('${phone.slug}')"><span>Show Details</span></button>
+            <a href="#phone-detail" onclick="loadPhoneDetail('${phone.slug}')"><span>Show Details</span></a>
         </div>
     `;
     phoneContainer.appendChild(div);
   });
 };
+
+// Phone Detail Id
 
 const loadPhoneDetail = (phoneId) => {
   const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
@@ -35,6 +41,8 @@ const loadPhoneDetail = (phoneId) => {
     .then((res) => res.json())
     .then((data) => displayPhoneDetail(data.data));
 };
+
+// Show Phone Details Result
 
 const displayPhoneDetail = (phone) => {
   console.log(phone);
@@ -58,7 +66,7 @@ const displayPhoneDetail = (phone) => {
             </div>
         </div>
         <hr class="hr">
-        <div class="col">
+        <div class="col-sm-12">
             <div class="card-body">
                 <p class="card-text"><span>Announced : </span>${phone.releaseDate}</p>
                 <p class="card-text"><span>Display : </span>${phone.mainFeatures.displaySize}</p>

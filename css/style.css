@@ -2,7 +2,7 @@
   padding: 10px;
 }
 
-.card button {
+.card a {
   width: 60%;
   margin: 0 auto;
   background-color: #1faa59;
@@ -17,18 +17,19 @@
   text-align: center;
 }
 
-.card button:hover {
+.card a:hover {
   background-color: #36cc10bd;
+  color: #ffff;
 }
 
-.card button span {
+.card a span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-.card button span:after {
+.card a span:after {
   content: "\00bb";
   position: absolute;
   opacity: 0;
@@ -37,11 +38,11 @@
   transition: 0.5s;
 }
 
-.card button:hover span {
+.card a:hover span {
   padding-right: 25px;
 }
 
-.card button:hover span:after {
+.card a:hover span:after {
   opacity: 1;
   right: 0;
 }
