@@ -47,24 +47,17 @@
   right: 0;
 }
 
-.card-text span {
-  font-size: 18px;
-  font-weight: 600;
+.image {
+  width: 80%;
 }
 
-.card-text {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.fa-calendar-day {
-  font-size: 15px;
+#phone {
+  display: flex;
+  justify-content: center;
+  padding: 40px 15px;
 }
 
 .hr {
-  margin-top: 20px;
-  margin-bottom: 0px;
   padding: 2px;
-  color: #1929bbb9;
-  border-radius: 10px;
+  color: #685e688f;
 }

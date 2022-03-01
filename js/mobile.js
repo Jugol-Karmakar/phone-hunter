@@ -15,7 +15,7 @@ const loadButton = () => {
 const displayLoad = (phones) => {
   const phoneContainer = document.getElementById("phone-container");
   phoneContainer.textContent = "";
-  phones.forEach((phone) => {
+  phones.slice(0, 20).forEach((phone) => {
     // console.log(phone);
     const div = document.createElement("div");
     div.classList.add("col");
@@ -39,12 +39,14 @@ const loadPhoneDetail = (phoneId) => {
   const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
   fetch(url)
     .then((res) => res.json())
-    .then((data) => displayPhoneDetail(data.data));
+    .then((data) =>
+      displayPhoneDetail(data.data, data.data.mainFeatures.sensors)
+    );
 };
 
 // Show Phone Details Result
 
-const displayPhoneDetail = (phone) => {
+const displayPhoneDetail = (phone, sensors) => {
   console.log(phone);
   const phoneDetail = document.getElementById("phone-detail");
   phoneDetail.textContent = "";
@@ -53,34 +55,64 @@ const displayPhoneDetail = (phone) => {
   div.classList.add("card");
   div.innerHTML = `
     <div class="row g-0">
-        <div class="col-md-4">
-        <img src="${phone.image}" class="img-fluid rounded-start" alt="..." />
+        <div id="phone" class="col-lg-4">
+            <img src="${phone.image}" class="image" alt="..." />
         </div>
-        <div class="col-md-8">
+        <div class="col-lg-8">
             <div class="card-body">
                 <h4 class="card-title">${phone.name}</h4>
-                <p class="card-text">${phone.releaseDate}</p>
-                <p class="card-text">${phone.mainFeatures.storage}</p>
-                <p class="card-text">${phone.mainFeatures.chipSet}</p>
-                <p class="card-text">${phone.mainFeatures.displaySize}</p>
+                <p><span>${phone.releaseDate}</span></p>
+                <p><span class="fw-bold">Storage : </span><span>${
+                  phone.mainFeatures.storage
+                }</span></p>
+                <p><span class="fw-bold">Chipset : </span><span>${
+                  phone.mainFeatures.chipSet
+                }</span></p>
+                <p><span class="fw-bold">Display : </span><span>${
+                  phone.mainFeatures.displaySize
+                }</span></p>
+                <p><span class="fw-bold">Memory : </span><span>${
+                  phone.mainFeatures.memory
+                }</span></p>
+            </div>
+            <hr class="hr">  
+            <div class="row">
+                <div class="col-lg-4">
+                    <h4>Sensor :</h4>
+                    <ul>
+                    ${sensors
+                      .map((sensor) => {
+                        return '<li class="">' + sensor + "</li>";
+                      })
+                      .join("")}
+                    </ul>
+                </div>
+
+                <div class="col-lg-6">
+                <h4>Others Feature :</h4>
+                <p><span class="fw-bold">Bluetooth : </span><span>${
+                  phone.others.Bluetooth
+                }</span></p>
+                <p><span class="fw-bold">GPS : </span><span>${
+                  phone.others.GPS
+                }</span></p>
+                <p><span class="fw-bold">NFC : </span><span>${
+                  phone.others.NFC
+                }</span></p>
+                <p><span class="fw-bold">Radio : </span><span>${
+                  phone.others.Radio
+                }</span></p>
+                <p><span class="fw-bold">USB : </span><span>${
+                  phone.others.USB
+                }</span></p>
+                <p><span class="fw-bold">WLAN : </span><span>${
+                  phone.others.WLAN
+                }</span></p>
             </div>
         </div>
-        <hr class="hr">
-        <div class="col-sm-12">
-            <div class="card-body">
-                <p class="card-text"><span>Announced : </span>${phone.releaseDate}</p>
-                <p class="card-text"><span>Display : </span>${phone.mainFeatures.displaySize}</p>
-                <p class="card-text"><span>Memory : </span>${phone.mainFeatures.memory}</p>
-                <p class="card-text"><span>Chipset : </span>${phone.mainFeatures.chipSet}</p>
-                <p class="card-text"><span>Bluetooth : </span>${phone.others.Bluetooth}</p>
-                <p class="card-text"><span>GPS : </span>${phone.others.GPS}</p>
-                <p class="card-text"><span>NFC : </span>${phone.others.NFC}</p>
-                <p class="card-text"><span>Radio : </span>${phone.others.Radio}</p>
-                <p class="card-text"><span>USB : </span>${phone.others.USB}</p>
-                <p class="card-text"><span>WLAN : </span>${phone.others.WLAN}</p>
-            </div>
-        </div>
-  </div>
+              
+            
+    </div>
     `;
 
   phoneDetail.appendChild(div);
