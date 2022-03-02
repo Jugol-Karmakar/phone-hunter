@@ -72,7 +72,9 @@ const displayPhoneDetail = (phone, sensors) => {
             <div class="card-body">
                 <h4 class="card-title">${phone.name}</h4>
                 <p><span>${
-                  phone.releaseDate ? phone.releaseDate : "No Relased date"
+                  phone.releaseDate
+                    ? phone.releaseDate
+                    : "No Release Date Available"
                 }</span></p>
                 <p><span class="fw-bold">Storage : </span><span>${
                   phone.mainFeatures.storage
@@ -103,20 +105,20 @@ const displayPhoneDetail = (phone, sensors) => {
                 <div class="col-lg-6">
                 <h4>Others Feature :</h4>
                 <p><span class="fw-bold">Bluetooth : </span>
-                <span>${Bluetooth ? Bluetooth : "no data "}</span></p>
+                <span>${Bluetooth ? Bluetooth : "No Data Available"}</span></p>
                 <p><span class="fw-bold">GPS : </span>
-                <span>${GPS ? GPS : "no data"}</span></p>
+                <span>${GPS ? GPS : "No Data Available"}</span></p>
                 <p><span class="fw-bold">NFC : </span><span>${
-                  NFC ? NFC : "no data"
+                  NFC ? NFC : "No Data Available"
                 }</span></p>
                 <p><span class="fw-bold">Radio : </span><span>${
-                  Radio ? Radio : "no data"
+                  Radio ? Radio : "No Date Available"
                 }</span></p>
                 <p><span class="fw-bold">USB : </span><span>${
-                  USB ? USB : "no data"
+                  USB ? USB : "No Data Available"
                 }</span></p>
                 <p><span class="fw-bold">WLAN : </span><span>${
-                  WLAN ? WLAN : "no data"
+                  WLAN ? WLAN : "No Data Available"
                 }</span></p>
             </div>
         </div>         
