@@ -1,4 +1,4 @@
-// button data load
+// button data load api
 
 const loadButton = () => {
   const searchInput = document.getElementById("search-input");
@@ -15,11 +15,12 @@ const loadButton = () => {
 const displayLoad = (phones) => {
   const phoneContainer = document.getElementById("phone-container");
   phoneContainer.textContent = "";
-  phones.slice(0, 20).forEach((phone) => {
-    // console.log(phone);
-    const div = document.createElement("div");
-    div.classList.add("col");
-    div.innerHTML = `
+
+  if (phones.length > 0) {
+    phones.slice(0, 20).map((phone) => {
+      const div = document.createElement("div");
+      div.classList.add("col");
+      div.innerHTML = `
         <div class="card h-100 shadow">
             <img src="${phone.image}" class="card-img-top img-fluid" alt="..." />
             <div class="card-body text-center">
@@ -29,11 +30,20 @@ const displayLoad = (phones) => {
             <a href="#phone-detail" onclick="loadPhoneDetail('${phone.slug}')"><span>Show Details</span></a>
         </div>
     `;
-    phoneContainer.appendChild(div);
-  });
+      phoneContainer.appendChild(div);
+    });
+  } else {
+    const error = document.createElement("h4");
+    const classes = ["text-danger", "mx-auto", "fw-bold"];
+    error.classList.add(...classes);
+    error.innerHTML = `
+    Result Not Found
+    `;
+    phoneContainer.appendChild(error);
+  }
 };
 
-// Phone Detail Id
+// Phone Detail Id api
 
 const loadPhoneDetail = (phoneId) => {
   const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
@@ -47,7 +57,7 @@ const loadPhoneDetail = (phoneId) => {
 // Show Phone Details Result
 
 const displayPhoneDetail = (phone, sensors) => {
-  console.log(phone);
+  const { Bluetooth, GPS, NFC, Radio, USB, WLAN } = phone?.others || {};
   const phoneDetail = document.getElementById("phone-detail");
   phoneDetail.textContent = "";
 
@@ -61,7 +71,9 @@ const displayPhoneDetail = (phone, sensors) => {
         <div class="col-lg-8">
             <div class="card-body">
                 <h4 class="card-title">${phone.name}</h4>
-                <p><span>${phone.releaseDate}</span></p>
+                <p><span>${
+                  phone.releaseDate ? phone.releaseDate : "No Relased date"
+                }</span></p>
                 <p><span class="fw-bold">Storage : </span><span>${
                   phone.mainFeatures.storage
                 }</span></p>
@@ -90,23 +102,21 @@ const displayPhoneDetail = (phone, sensors) => {
 
                 <div class="col-lg-6">
                 <h4>Others Feature :</h4>
-                <p><span class="fw-bold">Bluetooth : </span><span>${
-                  phone.others.Bluetooth
-                }</span></p>
-                <p><span class="fw-bold">GPS : </span><span>${
-                  phone.others.GPS
-                }</span></p>
+                <p><span class="fw-bold">Bluetooth : </span>
+                <span>${Bluetooth ? Bluetooth : "no data "}</span></p>
+                <p><span class="fw-bold">GPS : </span>
+                <span>${GPS ? GPS : "no data"}</span></p>
                 <p><span class="fw-bold">NFC : </span><span>${
-                  phone.others.NFC
+                  NFC ? NFC : "no data"
                 }</span></p>
                 <p><span class="fw-bold">Radio : </span><span>${
-                  phone.others.Radio
+                  Radio ? Radio : "no data"
                 }</span></p>
                 <p><span class="fw-bold">USB : </span><span>${
-                  phone.others.USB
+                  USB ? USB : "no data"
                 }</span></p>
                 <p><span class="fw-bold">WLAN : </span><span>${
-                  phone.others.WLAN
+                  WLAN ? WLAN : "no data"
                 }</span></p>
             </div>
         </div>
