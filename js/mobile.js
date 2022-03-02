@@ -119,9 +119,7 @@ const displayPhoneDetail = (phone, sensors) => {
                   WLAN ? WLAN : "no data"
                 }</span></p>
             </div>
-        </div>
-              
-            
+        </div>         
     </div>
     `;
 
